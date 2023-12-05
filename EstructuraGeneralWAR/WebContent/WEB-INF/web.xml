@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>EstructuraGeneralWAR</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  
+  <servlet>
+    <servlet-name>CrearProducto</servlet-name>
+    <jsp-file>/views/crear_producto.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrearProducto</servlet-name>
+    <url-pattern>/crear_producto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CrearUsuario</servlet-name>
+    <jsp-file>/views/crear_usuario.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrearUsuario</servlet-name>
+    <url-pattern>/crear_usuario</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CrearCategoria</servlet-name>
+    <jsp-file>/views/crear_categoria.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrearCategoria</servlet-name>
+    <url-pattern>/crear_categoria</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>IniciarSesion</servlet-name>
+    <jsp-file>/views/iniciar_sesion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IniciarSesion</servlet-name>
+    <url-pattern>/iniciar_sesion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MostrarProductos</servlet-name>
+    <jsp-file>/views/mostrar_productos.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostrarProductos</servlet-name>
+    <url-pattern>/mostrar_productos</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MostrarUsuarios</servlet-name>
+    <jsp-file>/views/mostrar_usuarios.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostrarUsuarios</servlet-name>
+    <url-pattern>/mostrar_usuarios</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MostrarCategorias</servlet-name>
+    <jsp-file>/views/mostrar_categorias.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostrarCategorias</servlet-name>
+    <url-pattern>/mostrar_categorias</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PanelAdministrador</servlet-name>
+    <jsp-file>/views/panel_administrador.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PanelAdministrador</servlet-name>
+    <url-pattern>/panel_administrador</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PanelCliente</servlet-name>
+    <jsp-file>/views/panel_cliente.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PanelCliente</servlet-name>
+    <url-pattern>/panel_cliente</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file='includes/head_styles.jsp' %>
 <%@ include file='includes/head_scripts.jsp' %>
@@ -14,7 +14,7 @@
 <% 
 if (session.getAttribute("renderizarVista") == "iniciarSesion") {
 %>	
-	<h1>Iniciar sesión</h1>	
+	<h1>Iniciar sesiÃ³n</h1>	
 	
 	<form action="<%=request.getContextPath()%>/Usuario" method="POST">
 		<table>
@@ -23,7 +23,7 @@ if (session.getAttribute("renderizarVista") == "iniciarSesion") {
 				<td><input type="text" name="rut" required/></td>
 			</tr>
 			<tr>
-				<td>Contraseña</td>
+				<td>ContraseÃ±a</td>
 				<td><input type="password" name="clave" required/></td>
 			</tr>
 		</table>

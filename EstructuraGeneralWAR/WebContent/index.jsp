@@ -1,10 +1,10 @@
 <%@page import="cl.litscl.estructurageneralejb.model.Usuario"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/styles.css"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/vendor/jquery-3.5.0/jquery-3.5.0.min.js"></script>
@@ -23,13 +23,13 @@ if (session.getAttribute("renderizarVista") == "index") {
 		if (u.getTipo().equals("Administrador")) {
 		%>
 			<br><h1>Bienvenido Administrador</h1>
-			<a href="<%=request.getContextPath()%>/Usuario?opcion=1">Cerrar Sesión</a>
+			<a href="<%=request.getContextPath()%>/Usuario?opcion=1">Cerrar SesiÃ³n</a>
 		<%
 		}
 		if (u.getTipo().equals("Cliente")) {
 		%>
 			<br><h1>Bienvenido Cliente</h1>
-			<a href="<%=request.getContextPath()%>/Usuario?opcion=1">Cerrar Sesión</a>	
+			<a href="<%=request.getContextPath()%>/Usuario?opcion=1">Cerrar SesiÃ³n</a>	
 	<%
 		}
 	}

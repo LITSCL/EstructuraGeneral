@@ -2,7 +2,7 @@
 	<nav>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>">Inicio</a></li>
-			<li><a href="<%=request.getContextPath()%>/iniciar_sesion">Iniciar Sesión</a></li>
+			<li><a href="<%=request.getContextPath()%>/iniciar_sesion">Iniciar SesiÃ³n</a></li>
 			<li><a href="<%=request.getContextPath()%>/crear_usuario">Crear Usuario</a></li>
 			<li><a href="<%=request.getContextPath()%>/crear_producto">Crear Producto</a></li>
 			<li><a href="<%=request.getContextPath()%>/crear_categoria">Crear Categoria</a></li>

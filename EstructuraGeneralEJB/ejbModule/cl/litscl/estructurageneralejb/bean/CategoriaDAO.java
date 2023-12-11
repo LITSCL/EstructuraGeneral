@@ -66,5 +66,4 @@ public class CategoriaDAO implements CategoriaDAOLocal {
 			em.close();
 		}
 	}
-
 }

@@ -69,53 +69,53 @@ public class UsuarioControlador extends HttpServlet {
 		
 		//4. Revisar que vista se desea renderizar.
 		switch (vista) { //NOTA: Este Switch es para renderiza vistas.
-		case "crear_usuario":
-			sesion.setAttribute("renderizarVista", "crearUsuario");
-			response.sendRedirect(request.getContextPath() + "/crear_usuario");
-			break;
-		case "mostrar_usuarios":
-			List<Usuario> usuarios = daoUsuario.getAll();
-			sesion.setAttribute("usuarios", usuarios);
-			
-			sesion.setAttribute("renderizarVista", "mostrarUsuarios");
-			response.sendRedirect(request.getContextPath() + "/mostrar_usuarios");
-			break;
-		case "iniciar_sesion":	
-			sesion.setAttribute("renderizarVista", "iniciarSesion");
-			response.sendRedirect(request.getContextPath() + "/iniciar_sesion");
-			break;
-		case "panel_administrador":
-			if (sesion.getAttribute("usuario") != null) {
-				this.u = (Usuario)sesion.getAttribute("usuario");
-				if (this.u.getTipo().equals("Administrador")) {
-					sesion.setAttribute("renderizarVista", "panelAdministrador");
-					response.sendRedirect(request.getContextPath() + "/panel_administrador");
+			case "crear_usuario":
+				sesion.setAttribute("renderizarVista", "crearUsuario");
+				response.sendRedirect(request.getContextPath() + "/crear_usuario");
+				break;
+			case "mostrar_usuarios":
+				List<Usuario> usuarios = daoUsuario.getAll();
+				sesion.setAttribute("usuarios", usuarios);
+				
+				sesion.setAttribute("renderizarVista", "mostrarUsuarios");
+				response.sendRedirect(request.getContextPath() + "/mostrar_usuarios");
+				break;
+			case "iniciar_sesion":	
+				sesion.setAttribute("renderizarVista", "iniciarSesion");
+				response.sendRedirect(request.getContextPath() + "/iniciar_sesion");
+				break;
+			case "panel_administrador":
+				if (sesion.getAttribute("usuario") != null) {
+					this.u = (Usuario)sesion.getAttribute("usuario");
+					if (this.u.getTipo().equals("Administrador")) {
+						sesion.setAttribute("renderizarVista", "panelAdministrador");
+						response.sendRedirect(request.getContextPath() + "/panel_administrador");
+					}
+					else {
+						response.sendRedirect(request.getContextPath());
+					}
 				}
 				else {
 					response.sendRedirect(request.getContextPath());
-				}
-			}
-			else {
-				response.sendRedirect(request.getContextPath());
-			}		
-			break;
-		case "panel_cliente":
-			if (sesion.getAttribute("usuario") != null) {
-				this.u = (Usuario)sesion.getAttribute("usuario");
-				if (this.u.getTipo().equals("Cliente")) {
-					sesion.setAttribute("renderizarVista", "panelCliente");
-					response.sendRedirect(request.getContextPath() + "/panel_cliente");
+				}		
+				break;
+			case "panel_cliente":
+				if (sesion.getAttribute("usuario") != null) {
+					this.u = (Usuario)sesion.getAttribute("usuario");
+					if (this.u.getTipo().equals("Cliente")) {
+						sesion.setAttribute("renderizarVista", "panelCliente");
+						response.sendRedirect(request.getContextPath() + "/panel_cliente");
+					}
+					else {
+						response.sendRedirect(request.getContextPath());
+					}
 				}
 				else {
 					response.sendRedirect(request.getContextPath());
-				}
-			}
-			else {
-				response.sendRedirect(request.getContextPath());
-			}		
-			break;
-		default:
-			break;
+				}		
+				break;
+			default:
+				break;
 		}
 		
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde la URL.
@@ -144,62 +144,62 @@ public class UsuarioControlador extends HttpServlet {
 		
 		//3. Revisar que hay que procesar.
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde un formulario.
-		case "1": //Crear.
-			this.rut = request.getParameter("rut");
-			this.nombre = request.getParameter("nombre");
-			this.apellido = request.getParameter("apellido");
-			this.email = request.getParameter("email");
-			this.clave = request.getParameter("clave");
-			this.tipo = request.getParameter("tipo");	
-			
-			if (rutUtil.validarRutChileno(this.rut) == false) {
-				errores.add("El rut ingresado no posee formato válido");
-			}
-			
-			this.u.setRut(rut);
-			this.u.setNombre(nombre);
-			this.u.setApellido(apellido);
-			this.u.setEmail(email);
-			this.u.setClave(clave);
-			this.u.setTipo(tipo);
-			
-			if (errores.isEmpty() == true) {
-				if (daoUsuario.save(this.u)) {
-					sesion.setAttribute("crearUsuario", "Exitoso");
+			case "1": //Crear.
+				this.rut = request.getParameter("rut");
+				this.nombre = request.getParameter("nombre");
+				this.apellido = request.getParameter("apellido");
+				this.email = request.getParameter("email");
+				this.clave = request.getParameter("clave");
+				this.tipo = request.getParameter("tipo");	
+				
+				if (rutUtil.validarRutChileno(this.rut) == false) {
+					errores.add("El rut ingresado no posee formato válido");
+				}
+				
+				this.u.setRut(rut);
+				this.u.setNombre(nombre);
+				this.u.setApellido(apellido);
+				this.u.setEmail(email);
+				this.u.setClave(clave);
+				this.u.setTipo(tipo);
+				
+				if (errores.isEmpty() == true) {
+					if (daoUsuario.save(this.u)) {
+						sesion.setAttribute("crearUsuario", "Exitoso");
+					}
+					else {
+						sesion.setAttribute("crearUsuario", "Fallido");
+					}			
 				}
 				else {
 					sesion.setAttribute("crearUsuario", "Fallido");
-				}			
-			}
-			else {
-				sesion.setAttribute("crearUsuario", "Fallido");
-				sesion.setAttribute("errores", errores);
-			}
-			response.sendRedirect(request.getContextPath() + "/crear_usuario");		
-			break;
-		case "2": //Logear.
-			this.rut = request.getParameter("rut");
-			this.clave = request.getParameter("clave");	
-			
-			this.u = daoUsuario.find(this.rut);
-			
-			if (this.u != null) {
-				if (this.u.getClave().equals(this.clave) == true) {
-					sesion.setAttribute("usuario", this.u);
-					response.sendRedirect(request.getContextPath());
+					sesion.setAttribute("errores", errores);
+				}
+				response.sendRedirect(request.getContextPath() + "/crear_usuario");		
+				break;
+			case "2": //Logear.
+				this.rut = request.getParameter("rut");
+				this.clave = request.getParameter("clave");	
+				
+				this.u = daoUsuario.find(this.rut);
+				
+				if (this.u != null) {
+					if (this.u.getClave().equals(this.clave) == true) {
+						sesion.setAttribute("usuario", this.u);
+						response.sendRedirect(request.getContextPath());
+					}
+					else {
+						sesion.setAttribute("errorLogin", "Credenciales incorrectas");
+						response.sendRedirect(request.getContextPath() + "/iniciar_sesion");
+					}
 				}
 				else {
 					sesion.setAttribute("errorLogin", "Credenciales incorrectas");
 					response.sendRedirect(request.getContextPath() + "/iniciar_sesion");
-				}
-			}
-			else {
-				sesion.setAttribute("errorLogin", "Credenciales incorrectas");
-				response.sendRedirect(request.getContextPath() + "/iniciar_sesion");
-			}			
-			break;
-		default:
-			break;
+				}			
+				break;
+			default:
+				break;
 		}
 	}
 }

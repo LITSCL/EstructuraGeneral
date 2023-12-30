@@ -61,26 +61,26 @@ public class CategoriaControlador extends HttpServlet {
 		
 		//4. Revisar que vista se desea renderizar.
 		switch (vista) { //NOTA: Este Switch es para renderiza vistas.
-		case "crear_categoria":		
-			sesion.setAttribute("renderizarVista", "crearCategoria");
-			response.sendRedirect(request.getContextPath() + "/crear_categoria");
-			break;
-		case "mostrar_categorias":
-			List<Categoria> categorias = daoCategoria.getAll();
-			sesion.setAttribute("categorias", categorias);
-			
-			sesion.setAttribute("renderizarVista", "mostrarCategorias");
-			response.sendRedirect(request.getContextPath() + "/mostrar_categorias");
-			break;
-		default:
-			break;
+			case "crear_categoria":		
+				sesion.setAttribute("renderizarVista", "crearCategoria");
+				response.sendRedirect(request.getContextPath() + "/crear_categoria");
+				break;
+			case "mostrar_categorias":
+				List<Categoria> categorias = daoCategoria.getAll();
+				sesion.setAttribute("categorias", categorias);
+				
+				sesion.setAttribute("renderizarVista", "mostrarCategorias");
+				response.sendRedirect(request.getContextPath() + "/mostrar_categorias");
+				break;
+			default:
+				break;
 		}
 		
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde la URL.
-		case "1": //Sin asignar.
-			break;
-		default:
-			break;
+			case "1": //Sin asignar.
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -98,21 +98,21 @@ public class CategoriaControlador extends HttpServlet {
 		
 		//3. Revisar que hay que procesar.
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde un formulario.
-		case "1": //Crear.
-			this.nombre = request.getParameter("nombre");	
-			
-			this.c.setNombre(nombre);
-			
-			if (daoCategoria.save(this.c)) {
-				sesion.setAttribute("crearCategoria", "Exitoso");
-			}
-			else {
-				sesion.setAttribute("crearCategoria", "Fallido");
-			}			
-			response.sendRedirect(request.getContextPath() + "/crear_categoria");		
-			break;
-		default:
-			break;
+			case "1": //Crear.
+				this.nombre = request.getParameter("nombre");	
+				
+				this.c.setNombre(nombre);
+				
+				if (daoCategoria.save(this.c)) {
+					sesion.setAttribute("crearCategoria", "Exitoso");
+				}
+				else {
+					sesion.setAttribute("crearCategoria", "Fallido");
+				}			
+				response.sendRedirect(request.getContextPath() + "/crear_categoria");		
+				break;
+			default:
+				break;
 		}
 	}
 

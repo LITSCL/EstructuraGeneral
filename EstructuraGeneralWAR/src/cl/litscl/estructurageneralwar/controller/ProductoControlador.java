@@ -66,28 +66,28 @@ public class ProductoControlador extends HttpServlet {
 		
 		//4. Revisar que vista se desea renderizar.
 		switch (vista) { //NOTA: Este Switch es para renderiza vistas.
-		case "crear_producto":	
-			sesion.setAttribute("categorias", daoCategoria.getAll());
-			
-			sesion.setAttribute("renderizarVista", "crearProducto");
-			response.sendRedirect(request.getContextPath() + "/crear_producto");
-			break;
-		case "mostrar_productos":
-			List<Producto> productos = daoProducto.getAll();
-			sesion.setAttribute("productos", productos);
-			
-			sesion.setAttribute("renderizarVista", "mostrarProductos");
-			response.sendRedirect(request.getContextPath() + "/mostrar_productos");
-			break;
-		default:
-			break;
+			case "crear_producto":	
+				sesion.setAttribute("categorias", daoCategoria.getAll());
+				
+				sesion.setAttribute("renderizarVista", "crearProducto");
+				response.sendRedirect(request.getContextPath() + "/crear_producto");
+				break;
+			case "mostrar_productos":
+				List<Producto> productos = daoProducto.getAll();
+				sesion.setAttribute("productos", productos);
+				
+				sesion.setAttribute("renderizarVista", "mostrarProductos");
+				response.sendRedirect(request.getContextPath() + "/mostrar_productos");
+				break;
+			default:
+				break;
 		}
 		
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde la URL.
-		case "1": //Sin asignar.
-			break;
-		default:
-			break;
+			case "1": //Sin asignar.
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -105,27 +105,27 @@ public class ProductoControlador extends HttpServlet {
 		
 		//3. Revisar que hay que procesar.
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde un formulario.
-		case "1": //Crear.
-			this.codigo = request.getParameter("codigo");
-			this.nombre = request.getParameter("nombre");
-			this.precio = Double.parseDouble(request.getParameter("precio"));
-			this.categoriaFK = Integer.parseInt(request.getParameter("categoria"));	
-			
-			this.p.setCodigo(codigo);
-			this.p.setNombre(nombre);
-			this.p.setPrecio(precio);
-			this.p.setCategoriaFK(categoriaFK);
-			
-			if (daoProducto.save(this.p)) {
-				sesion.setAttribute("crearProducto", "Exitoso");
-			}
-			else {
-				sesion.setAttribute("crearProducto", "Fallido");
-			}			
-			response.sendRedirect(request.getContextPath() + "/crear_producto");		
-			break;
-		default:
-			break;
+			case "1": //Crear.
+				this.codigo = request.getParameter("codigo");
+				this.nombre = request.getParameter("nombre");
+				this.precio = Double.parseDouble(request.getParameter("precio"));
+				this.categoriaFK = Integer.parseInt(request.getParameter("categoria"));	
+				
+				this.p.setCodigo(codigo);
+				this.p.setNombre(nombre);
+				this.p.setPrecio(precio);
+				this.p.setCategoriaFK(categoriaFK);
+				
+				if (daoProducto.save(this.p)) {
+					sesion.setAttribute("crearProducto", "Exitoso");
+				}
+				else {
+					sesion.setAttribute("crearProducto", "Fallido");
+				}			
+				response.sendRedirect(request.getContextPath() + "/crear_producto");		
+				break;
+			default:
+				break;
 		}
 	}
 

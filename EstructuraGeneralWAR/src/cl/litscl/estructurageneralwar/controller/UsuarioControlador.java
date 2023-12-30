@@ -52,14 +52,14 @@ public class UsuarioControlador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//doGet: Se debe utilizar para renderizar vistas y controlar datos que llegan desde la URL.
 		
-		//1. Crear una sesi�n.
+		//1. Crear una sesión.
 		HttpSession sesion = request.getSession(false);
 		
-		//2. recibir los par�metros.
+		//2. recibir los parámetros.
 		String vista = request.getParameter("vista");
 		String opcion = request.getParameter("opcion");
 		
-		//3. Verificar si llegan los par�metros (Switch no puede recibir datos "null").
+		//3. Verificar si llegan los parámetros (Switch no puede recibir datos "null").
 		if (vista == null) {
 			vista = "";
 		}
@@ -134,10 +134,10 @@ public class UsuarioControlador extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//doPost: Se debe utilizar para procesar datos que llegan desde formularios y luego redireccionar a una vista.
 		
-		//1. Crear una sesi�n.
+		//1. Crear una sesión.
 		HttpSession sesion = request.getSession(false);
 		
-		//2. Recibir la opci�n a controlar.
+		//2. Recibir la opción a controlar.
 		String opcion = request.getParameter("opcion");
 		
 		List<String> errores = new ArrayList<String>();
@@ -153,7 +153,7 @@ public class UsuarioControlador extends HttpServlet {
 			this.tipo = request.getParameter("tipo");	
 			
 			if (rutUtil.validarRutChileno(this.rut) == false) {
-				errores.add("El rut ingresado no posee formato v�lido");
+				errores.add("El rut ingresado no posee formato válido");
 			}
 			
 			this.u.setRut(rut);

@@ -115,5 +115,4 @@ public class CategoriaControlador extends HttpServlet {
 				break;
 		}
 	}
-
 }

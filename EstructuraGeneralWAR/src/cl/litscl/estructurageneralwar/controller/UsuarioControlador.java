@@ -119,12 +119,12 @@ public class UsuarioControlador extends HttpServlet {
 		}
 		
 		switch (opcion) { //NOTA: Este Switch es para controlar datos que llegan desde la URL.
-		case "1": //Desloguear.	
-			sesion.removeAttribute("usuario");
-			response.sendRedirect(request.getContextPath());
-			break;
-		default:
-			break;
+			case "1": //Desloguear.	
+				sesion.removeAttribute("usuario");
+				response.sendRedirect(request.getContextPath());
+				break;
+			default:
+				break;
 		}
 	}
 

@@ -2,12 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/styles.css"/>
-<script type="text/javascript" src="<%=request.getContextPath()%>/vendor/jquery-3.5.0/jquery-3.5.0.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/styles.css"/>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/vendor/jquery-3.5.0/jquery-3.5.0.min.js"></script>
 </head>
 <body>
 <% 
